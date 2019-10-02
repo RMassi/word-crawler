@@ -1,0 +1,33 @@
+@import "_mixins";
+@import "_variables";
+
+html {
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	height: 100%;
+}
+
+.application {
+	font-family: 'Roboto' !important;
+}
+
+body {
+	height: 100%;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	background-color: $lightGray;
+	
+	&::-webkit-scrollbar { 
+		display: none;
+	}
+}
+
+.router-container {
+	height: 100%;
+	width: 100%;
+}
+
+.clickable {
+	cursor: pointer;
+}
