@@ -4,9 +4,7 @@ import _ from 'lodash'
 class HomeService {
   async get(search) {
     let { data }  = await homeAPI.get(search)
-    console.log(data)
     let transformedData = transformData([data])
-    console.log(transformedData)
     return transformedData
   }
 }

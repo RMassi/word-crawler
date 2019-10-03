@@ -31,9 +31,6 @@ export default {
             selector: 'node',
             style: {
               'background-color': '#666',
-              'label': 'data(id)'
-            },
-            style: {
               'label': 'data(word)'
             }
           }, {
@@ -48,25 +45,6 @@ export default {
         ]
       }
     }
-  },
-  mounted() {
-
-    // debugger
-    // const container = document.getElementById('chart')
-
-    // this.chart = cytoscape({
-    //   container
-    // });
-
-    // this.
-
-    // this.chart = echarts.init(container, null, {
-    //   renderer: 'svg',
-    // })
-    // this.chart.on('click', (params) => {
-    //   if (this.onClickFn) this.onClickFn(params)
-    // })
-    // if (this.items.length) this.draw()
   },
   methods: {
     preConfig(cytoscape) {
@@ -99,8 +77,7 @@ export default {
             edgeRouting: 'SPLINES'
           }
         }).run()
-
-},
+    },
     onResize() {
       if (this.items && this.chart) {
         // this.chart.resize()

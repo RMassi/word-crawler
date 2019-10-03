@@ -1,10 +1,16 @@
 <template>
   <div>
-    <v-form ref="form">
+    <v-form ref="form" @submit.prevent>
       <div class="searchbar">
           <div class="input-container">
             <v-icon small>fa-search</v-icon>
-            <v-text-field hide-details height="35" class="text-field" v-model="model.search" :rules="[rules.required]"></v-text-field>
+            <v-text-field 
+              v-on:keyup.enter="search"
+              hide-details
+              height="35"
+              class="text-field"
+              v-model="model.search"
+              :rules="[rules.required]"></v-text-field>
           </div>
           <div class="button-container">
             <v-btn outlined @click="search">Buscar</v-btn>
@@ -23,15 +29,10 @@ import { mapActions, mapGetters } from 'vuex'
 import { cloneDeep } from 'lodash'
 import Chart from '@/modules/Shared/chart.vue'
 
-// import Card from '@/modules/Shared/components/card/card.vue'
-// import FormHeader from '@/modules/Shared/components/form-header/form-header.vue'
-
 export default {
   name: 'Home',
   components: {
     Chart
-    // Card,
-    // FormHeader,
   },
   data() {
     return {
@@ -57,8 +58,7 @@ export default {
       'get'
     ]),
     search() {
-      if (this.$refs.form.validate()) {
-          // TODO - Passar valor de busca
+      if (this.$refs.form.validate() && !this.loader) {
         this.get(this.model.search)
       }
     }
