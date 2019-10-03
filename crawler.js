@@ -50,7 +50,7 @@ async function crawlPage(word, prevWords, currDepth, maxDepth) {
 
 function parseAndGetSynonyms(htmlBody) {
   const $ = cheerio.load(htmlBody)
-  let synonyms = $('#contentList .contentListData > p')
+  let synonyms = $('#contentList .contentListData > p:first-child')
   synonyms = synonyms.map(function(idx, node){
     return cheerio(node).contents().not('span').text().split(', ')
   })
