@@ -1,22 +1,22 @@
 <template>
-  <div>
-    <v-form ref="form" @submit.prevent>
-      <div class="searchbar">
-          <div class="input-container">
-            <v-icon small>fa-search</v-icon>
-            <v-text-field 
-              v-on:keyup.enter="search"
-              hide-details
-              height="35"
-              class="text-field"
-              v-model="model.search"
-              :rules="[rules.required]"></v-text-field>
-          </div>
-          <div class="button-container">
-            <v-btn outlined @click="search">Buscar</v-btn>
-          </div>
-      </div>
-    </v-form>
+  <div class="main-container">
+    <div class="searchbar">
+      <v-form ref="form" @submit.prevent>
+        <div class="input-container">
+          <v-icon small>fa-search</v-icon>
+          <v-text-field 
+            v-on:keyup.enter="search"
+            hide-details
+            height="35"
+            class="text-field"
+            v-model="model.search"
+            :rules="[rules.required]"></v-text-field>
+        </div>
+        <div class="button-container">
+          <v-btn outlined @click="search">Buscar</v-btn>
+        </div>
+      </v-form>
+    </div>
     <chart :items="wordSynonymsDataClone"></chart>
     <v-overlay :value="loader">
       <v-progress-circular indeterminate size="64"></v-progress-circular>
@@ -67,7 +67,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .searchbar {
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .searchbar > form {
     width: 100%;
     height: 50px;
     background-color: #E0E0E0;

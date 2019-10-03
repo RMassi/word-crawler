@@ -1,14 +1,12 @@
 <template>
-  <div class="chart">
-    <div class="chart-container" id="chart" v-resize="onResize">
-      <cytoscape ref="cy" :config="config" :preConfig="preConfig" v-on:add="onAddNode">
-        <cy-element
-          v-for="def in items"
-          :key="`${def.data.id}`"
-          :definition="def"
-        />
-      </cytoscape>
-    </div>
+  <div class="chart-container" id="chart" v-resize="onResize">
+    <cytoscape ref="cy" :config="config" :preConfig="preConfig" v-on:add="onAddNode">
+      <cy-element
+        v-for="def in items"
+        :key="`${def.data.id}`"
+        :definition="def"
+      />
+    </cytoscape>
   </div>
 </template>
 
@@ -47,6 +45,9 @@ export default {
     }
   },
   methods: {
+    // mounted() {
+    //   debugger
+    // },
     preConfig(cytoscape) {
       spread( cytoscape, weaverjs );
       cytoscape.use( klay )
@@ -103,12 +104,27 @@ export default {
 }
 </script>
 
+<style lang="scss">
+  #cytoscape-div {
+    height: 100%;
+  }
+</style>
+
 <style lang="scss" scoped>
-.chart {
-  .chart-container {
-    height: 300px;
-    width: 100%;
+  .__________cytoscape_container {
+    height: 100%;
   }
 
-}
+  .chart-container {
+    height: 100%;
+    width: 100%;
+
+    & > div {
+      height: 100%;
+
+      & >>> #cytoscape-div {
+        height: 100%;
+      }
+    }
+  }
 </style>
